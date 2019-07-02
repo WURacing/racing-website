@@ -1,5 +1,6 @@
 body {
     opacity: 0;
+    background-color: black;
 }
 
 #nav {
@@ -81,6 +82,26 @@ a:hover {
 
 .content {
     margin-top: 60px;
+}
+
+.testing-sites-content {
+    margin-top: 20px;
+}
+
+.members-content {
+    margin-top: -20px;
+}
+
+.index-content {
+    margin-top: 0px;
+}
+
+.history-content {
+    margin-top: 0px;
+}
+
+.gallery-content {
+    margin-top: -40px;
 }
 
 @media only screen and (max-width: 1000px) {
