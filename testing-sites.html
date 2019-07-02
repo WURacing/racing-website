@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/custom/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="assets/custom/css/testing-sites.css" type="text/css">
 
 
 </head>
@@ -80,12 +81,35 @@
                 <div class="row justify-content-md-center">
                     <div class="mbr-white col-md-10">
                         <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">
-                            Gateway Motorsports Park</h1>
+                            GATEWAY MOTORSPORTS PARK</h1>
 
                         <p class="mbr-text align-center pb-3 mbr-fonts-style display-5">
-                            Full width intro with adjustable height, background image and a color overlay. Click any
-                            text to
-                            edit or style it.
+                                <div class="gridContainer">
+                                        <div class="gridItem">
+                                            <canvas id="gatewayIcon" width="200px" height="200px"></canvas>
+                                        </div>
+                                        <div class="gridItem marginLeft">
+                                            <table>
+                                                <tr>
+                                                    <td>Temperature: </td>
+                                                    <td id="gatewayCurrTemp" class="data"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Feels Like:</td>
+                                                    <td id="gatewayFeelsLike" class="data"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Precipitation: </td>
+                                                    <td id="gatewayProbPrec" class="data"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Wind Speed: </td>
+                                                    <td id="gatewayWindSpeed" class="data"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="gridItem summary" id="gatewayDailySummary"></div>
+                                    </div>
                         </p>
 
                     </div>
@@ -118,12 +142,35 @@
                 <div class="row justify-content-md-center">
                     <div class="mbr-white col-md-10">
                         <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">
-                            Emerson Electric</h1>
+                            EMERSON ELECTRIC</h1>
 
                         <p class="mbr-text align-center pb-3 mbr-fonts-style display-5">
-                            Full width intro with adjustable height, background image and a color overlay. Click any
-                            text to
-                            edit or style it.
+                                <div class="gridContainer">
+                                        <div class="gridItem">
+                                            <canvas id="emersonIcon" width="200px" height="200px"></canvas>
+                                        </div>
+                                        <div class="gridItem">
+                                            <table>
+                                                <tr>
+                                                    <td>Temperature: </td>
+                                                    <td id="emersonCurrTemp" class="data"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Feels Like:</td>
+                                                    <td id="emersonFeelsLike" class="data"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Precipitation: </td>
+                                                    <td id="emersonProbPrec" class="data"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Wind Speed: </td>
+                                                    <td id="emersonWindSpeed" class="data"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="gridItem summary" id="emersonDailySummary"></div>
+                                    </div>
                         </p>
 
                     </div>
@@ -159,9 +206,32 @@
                             MOHELA</h1>
 
                         <p class="mbr-text align-center pb-3 mbr-fonts-style display-5">
-                            Full width intro with adjustable height, background image and a color overlay. Click any
-                            text to
-                            edit or style it.
+                            <div class="gridContainer">
+                                <div class="gridItem">
+                                    <canvas id="mohelaIcon" width="200px" height="200px"></canvas>
+                                </div>
+                                <div class="gridItem">
+                                    <table>
+                                        <tr>
+                                            <td>Temperature: </td>
+                                            <td id="mohelaCurrTemp" class="data"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Feels Like:</td>
+                                            <td id="mohelaFeelsLike" class="data"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Precipitation: </td>
+                                            <td id="mohelaProbPrec" class="data"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wind Speed: </td>
+                                            <td id="mohelaWindSpeed" class="data"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="gridItem summary" id="mohelaDailySummary"></div>
+                            </div>
                         </p>
 
                     </div>
@@ -192,6 +262,8 @@
     <script src="assets/parallax/jarallax.min.js"></script>
     <script src="assets/theme/js/script.js"></script>
     <script src="assets/custom/js/navbar.js"></script>
+    <script src="assets/custom/js/skycons.js"></script>
+    <script src="assets/custom/js/testing-sites.js"></script>
 
 </body>
 
