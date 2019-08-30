@@ -1,2 +1,0 @@
-# racing-website
-GitHub Pages
