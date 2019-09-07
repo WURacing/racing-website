@@ -52,10 +52,6 @@ a:hover {
     color: white;
 }
 
-#hamburger:hover {
-    color: black;
-}
-
 #hidden-links a {
     display: block;
     text-align: right;

@@ -1,3 +1,7 @@
+body {
+    background-color: white;
+}
+
 .sponsor-grid {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -10,7 +14,7 @@
     top: 60px;
     position: fixed;
     height: 30px;
-    background-color: rgba(245, 245, 245, 0.8);
+    background-color: rgba(255, 255, 255, 0.5);
     width: 100%;
     z-index: 99;
     text-align: center;
@@ -21,6 +25,7 @@
     transition: 0.1s;
     background-image: none;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 /*
@@ -80,7 +85,7 @@
 }
 
 .tier1Item {
-    padding: 20px;
+    padding: 30px;
     margin: auto auto;
     object-fit: contain;
 }
@@ -89,6 +94,7 @@
     padding: 20px;
     margin: auto auto;
     object-fit: contain;
+    
 }
 
 .tier3Item {
@@ -100,6 +106,11 @@
 .sponsor-grid img {
     width: 100%;
     height: auto;
+    margin: 0 auto;
+}
+
+.extraMargin {
+    margin-top: 100px;
 }
 
 @media only screen and (max-width: 850px) {
