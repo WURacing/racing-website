@@ -10,13 +10,13 @@ $('#logoText').hover(
 var dropDownHidden = true;
 $('.dropdown-links').click(function () {
     if (dropDownHidden) {
-        $('#nav').animate({ height: '350px' }, {
+        $('#nav').animate({ height: '300px' }, {
             duration: 100, complete: function () {
                 $('#hidden-links').css({ 'display': 'block' });
                 $('#hidden-links').animate({ opacity: '1' }, 250);
             }
         });
-        $('#hamburger').animate({ top: '30px' }, { duration: 100, queue: false });
+        $('#hamburger').animate({ top: '15px' }, { duration: 100, queue: false });
         dropDownHidden = false;
     } else {
         $('#hidden-links').animate({ opacity: '0' }, {
