@@ -21,10 +21,10 @@ body {
 }
 
 .login {
-    color: black;
+    color: white;
     position: relative;
     padding: 30px;
-    background-color: white;
+    background-color: #333333;
     margin-top: 150px;
     width: 40vw;
     border-radius: 7px;
@@ -46,12 +46,15 @@ input {
     padding: 0px;
 }
 
-small {
+.form-group a {
+    color: #999999 !important;
     transition: 0.2s;
+    font-size: 13px;
+    margin-top: 3px;
 }
 
-small:hover {
-    color: black !important;
+.form-group a:hover {
+    color: #ffffff !important;
 }
 
 .background img {
@@ -63,7 +66,7 @@ small:hover {
     .login {
         width: 100vw;
         border-radius: 0;
-        margin-top: 150px;
+        margin-top: 60px;
     }
 }
 

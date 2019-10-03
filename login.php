@@ -77,7 +77,7 @@ session_start();
             <div class="form-group">
                 <label for="password">Under Construction</label>
                 <input type="password" class="form-control" id="password" placeholder="Password">
-                <a href="index.html"><small id="passwordHelp" class="form-text text-muted">Forgot your password?</small></a>
+                <a href="index.html">Forgot your password?</a>
             </div>
             <button id="subBtn" type="submit" class="btn btn-primary">Sign In</button>
 
