@@ -1,0 +1,76 @@
+body {
+    color: white;
+    overflow: hidden;
+    background-color: black;
+}
+
+.background {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.login-content {
+    width: fit-content;
+    height: 100vh;
+    margin: auto auto;
+}
+
+.login {
+    color: black;
+    position: relative;
+    padding: 30px;
+    background-color: white;
+    margin-top: 150px;
+    width: 40vw;
+    border-radius: 7px;
+}
+
+#subBtn {
+    margin: 0px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+#createBtn {
+    margin: 0px;
+    padding: 10px;
+}
+
+input {
+    padding: 0px;
+}
+
+small {
+    transition: 0.2s;
+}
+
+small:hover {
+    color: black !important;
+}
+
+.background img {
+    -webkit-filter: blur(7px);
+    filter: blur(7px);
+}
+
+@media only screen and (max-width: 768px) {
+    .login {
+        width: 100vw;
+        border-radius: 0;
+        margin-top: 150px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+    .login {
+        width: 60vw;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {}
