@@ -93,6 +93,11 @@ include 'authenticator.php';
     <?php
         $auth = new authenticator();
         echo $auth->canConnect();
+        $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'sae_database');
+        if ($adminConnection->connect_errno) {
+            printf("Connection Failed: %s\n", $adminConnection->error);
+            exit;
+        }
 
         // Check if username exists
         $checkExistsString = sprintf("select * from users");
