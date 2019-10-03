@@ -18,22 +18,22 @@ class authenticator
         }
 
         // Check if username exists
-        $checkExistsString = sprintf("select password from users where email='user'");
-        $checkExists = $adminConnection->prepare($checkExistsString);
-        if (!$checkExists) {
-            printf("Query Prep Failed: %s\n", $checkExists->error);
+        $checkEmailAuthQuery = sprintf("select password from users where email='user'");
+        $checkEmailAuth = $adminConnection->prepare($checkEmailAuthQuer);
+        if (!$checkEmailAuth) {
+            printf("Query Prep Failed: %s\n", $checkEmailAuth->error);
             exit;
         }
-        $checkExists->execute();
-        $checkExists->bind_result($exists);
-        $checkExists->fetch();
+        $checkEmailAuth->execute();
+        $checkEmailAuth->bind_result($authed);
+        $checkEmailAuth->fetch();
 
-        return $exists;
+        return $authed;
 
         
     }
 
-    function usernameExists($username)
+    function emailAuthorized($email)
     {
 
         $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'sae_database');
@@ -42,27 +42,27 @@ class authenticator
             exit;
         }
 
-        // Check if username exists
-        $checkExistsString = sprintf("select username from users where username='%s'", $username);
-        $checkExists = $adminConnection->prepare($checkExistsString);
-        if (!$checkExists) {
-            printf("Query Prep Failed: %s\n", $checkExists->error);
+        // Check if email is authorized
+        $checkEmailAuthQuery = sprintf("select emailAuthorized from users where email='%s'", $email);
+        $checkEmailAuth = $adminConnection->prepare($checkEmailAuthQuery);
+        if (!$checkEmailAuth) {
+            printf("Query Prep Failed: %s\n", $checkEmailAuth->error);
             exit;
         }
-        $checkExists->execute();
-        $checkExists->bind_result($exists);
-        $checkExists->fetch();
+        $checkEmailAuth->execute();
+        $checkEmailAuth->bind_result($authed);
+        $checkEmailAuth->fetch();
 
         $adminConnection->close();
 
-        if ($exists) {
+        if ($authed) {
             return true;
         } else {
             return false;
         }
     }
 
-    function verifyPassword($username, $password)
+    function verifyPassword($email, $password)
     {
 
         $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'newsFeed');
@@ -71,7 +71,7 @@ class authenticator
             exit;
         }
 
-        $getPassHashQuery = sprintf("select password from users where username='%s'", $username);
+        $getPassHashQuery = sprintf("select password from users where email='%s'", $email);
         $getPassHash = $adminConnection->prepare($getPassHashQuery);
         if (!$getPassHash) {
             printf("Query Prep Failed: %s\n", $getPassHash->error);
@@ -91,7 +91,7 @@ class authenticator
         }
     }
 
-    function makeUser($username, $password, $email)
+    function makeUser($email, $password, $email)
     {
 
         $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'newsFeed');
@@ -101,7 +101,7 @@ class authenticator
         }
 
         // Create a MySQL account for the new user
-        $makeUserString = sprintf("create user '%s'@'localhost' identified by '%s'", $username, $password);
+        $makeUserString = sprintf("create user '%s'@'localhost' identified by '%s'", $email, $password);
         $makeUser = $adminConnection->prepare($makeUserString);
         if (!$makeUser) {
             printf("Query Prep Failed: %s\n", $makeUser->error);
@@ -110,7 +110,7 @@ class authenticator
         $makeUser->execute();
 
         // Grant the user privileges to modify information on the site
-        $grantPrivilegesString = sprintf("grant select, insert, update, delete on newsFeed.* to %s@'localhost'", $username);
+        $grantPrivilegesString = sprintf("grant select, insert, update, delete on newsFeed.* to %s@'localhost'", $email);
         $grantPrivileges = $adminConnection->prepare($grantPrivilegesString);
         if (!$grantPrivileges) {
             printf("Query Prep Failed: %s\n", $grantPrivileges->error);
@@ -123,7 +123,7 @@ class authenticator
             $email = htmlentities($_POST["email"]);
             $addUserString = sprintf(
                 "insert into users (username, password, email) values ('%s', '%s', '%s')",
-                $username,
+                $email,
                 password_hash($password, PASSWORD_DEFAULT),
                 $email
             );
@@ -131,7 +131,7 @@ class authenticator
         } else {
             $addUserString = sprintf(
                 "insert into users (username, password) values ('%s', '%s')",
-                $username,
+                $email,
                 password_hash($password, PASSWORD_DEFAULT)
             );
             $addUser = $adminConnection->prepare($addUserString);
@@ -146,22 +146,23 @@ class authenticator
         $adminConnection->close();
     }
 
-    function loginSuccess($username, $password)
+    function loginSuccess($email, $password)
     {
         session_start();
         $_SESSION["token"] = bin2hex(openssl_random_pseudo_bytes(32));
-        $_SESSION["username"] = $username;
+        $_SESSION["email"] = $email;
         $_SESSION["password"] = $password;
 
-        $returningUserConnection = new mysqli('localhost', $username, $password, 'newsFeed');
+        $returningUserConnection = new mysqli('localhost', $email, $password, 'sae_database');
         if ($returningUserConnection->connect_errno) {
             printf("Connection Failed: %s\n", $returningUserConnection->error);
             exit;
         }
+
         // Figure this out if time
         // $_SESSION["con"] = $returningUserConnection;
 
-        header("Location: returningUserHome.php");
+        header("Location: memberHome.php");
         exit;
     }
 }

@@ -73,7 +73,7 @@ include 'authenticator.php';
         <form class="login" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group">
                 <label for="wustlEmail">Under Construction</label>
-                <input type="email" class="form-control" id="wustlEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label for="password">Under Construction</label>
@@ -91,22 +91,18 @@ include 'authenticator.php';
     </div>
 
     <?php
-        $auth = new authenticator();
-        echo $auth->forTesting();
-        
+        if (isset($_POST["email"]) and isset($_POST["password"])) {
+            $email = htmlentities($_POST["email"]);
+            $password = htmlentities($_POST["password"]);
 
-        // if (isset($_POST["username"]) and isset($_POST["password"])) {
-        //     $username = htmlentities($_POST["username"]);
-        //     $password = htmlentities($_POST["password"]);
-
-        //     $auth = new authenticator();
-        //     if ($auth->usernameExists($username) and $auth->verifyPassword($username, $password)) {
-        //         $auth->loginSuccess($username, $password);
-        //         exit;
-        //     } else {
-        //         echo "<p>Incorrect Username or Password</p>";
-        //     }
-        // }
+            $auth = new authenticator();
+            if ($auth->emailAuthorized($email) and $auth->verifyPassword($email, $password)) {
+                $auth->loginSuccess($email, $password);
+                exit;
+            } else {
+                echo "<p>Incorrect Email or Password</p>";
+            }
+        }
     ?>
 
 
