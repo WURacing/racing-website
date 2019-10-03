@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'authenticator.php';
 ?>
 
 <!DOCTYPE html>
