@@ -1,7 +1,7 @@
 body {
     color: white;
-    overflow: hidden;
     background-color: black;
+    overflow: hidden;
 }
 
 .background {
@@ -16,7 +16,6 @@ body {
 
 .login-content {
     width: fit-content;
-    height: 100vh;
     margin: auto auto;
 }
 
