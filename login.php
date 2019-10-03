@@ -94,6 +94,19 @@ include 'authenticator.php';
         $auth = new authenticator();
         echo $auth->canConnect();
 
+        // Check if username exists
+        $checkExistsString = sprintf("select * from users");
+        $checkExists = $adminConnection->prepare($checkExistsString);
+        if (!$checkExists) {
+            printf("Query Prep Failed: %s\n", $checkExists->error);
+            exit;
+        }
+        $checkExists->execute();
+        $checkExists->bind_result($exists);
+        $checkExists->fetch();
+
+        echo $exists;
+
         // if (isset($_POST["username"]) and isset($_POST["password"])) {
         //     $username = htmlentities($_POST["username"]);
         //     $password = htmlentities($_POST["password"]);
