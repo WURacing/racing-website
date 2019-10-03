@@ -67,7 +67,7 @@ session_start();
     </div>
 
     <div class="login-content">
-       
+
 
         <form class="login" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group">
@@ -85,27 +85,26 @@ session_start();
             <label>or</label>
             <br>
             <button id="createBtn" type="submit" class="btn btn-primary">Create Account</button>
-            
+
         </form>
     </div>
 
     <?php
-    if (isset($_POST["username"])) {
+        $auth = new authenticator();
+        echo $auth->canConnect();
 
-        $_SESSION["username"] = (string) $_POST["username"];
+        // if (isset($_POST["username"]) and isset($_POST["password"])) {
+        //     $username = htmlentities($_POST["username"]);
+        //     $password = htmlentities($_POST["password"]);
 
-        $users = fopen("/srv/users.txt", "r");
-        while (!feof($users)) {
-            if ($_SESSION["username"] == trim(fgets($users))) {
-                $_SESSION["pathToFiles"] = (string) sprintf("/srv/uploads/%s", $_SESSION["username"]);
-                header("Location: homescreen.php");
-                exit;
-            }
-        }
-
-        fclose($users);
-        session_destroy();
-    }
+        //     $auth = new authenticator();
+        //     if ($auth->usernameExists($username) and $auth->verifyPassword($username, $password)) {
+        //         $auth->loginSuccess($username, $password);
+        //         exit;
+        //     } else {
+        //         echo "<p>Incorrect Username or Password</p>";
+        //     }
+        // }
     ?>
 
 
