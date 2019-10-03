@@ -18,7 +18,7 @@ class authenticator
         }
 
         // Check if username exists
-        $checkExistsString = sprintf("select * from users");
+        $checkExistsString = sprintf("select pass from users where email='user'");
         $checkExists = $adminConnection->prepare($checkExistsString);
         if (!$checkExists) {
             printf("Query Prep Failed: %s\n", $checkExists->error);
