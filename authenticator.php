@@ -9,14 +9,26 @@ class authenticator
     public function __constuct()
     { }
 
-    function canConnect()
+    function forTesting()
     {
         $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'sae_database');
         if ($adminConnection->connect_errno) {
-            return false;
+            printf("Connection Failed: %s\n", $adminConnection->error);
             exit;
         }
-        return true;
+
+        // Check if username exists
+        $checkExistsString = sprintf("select * from users");
+        $checkExists = $adminConnection->prepare($checkExistsString);
+        if (!$checkExists) {
+            printf("Query Prep Failed: %s\n", $checkExists->error);
+            exit;
+        }
+        $checkExists->execute();
+        $checkExists->bind_result($exists);
+        $checkExists->fetch();
+
+        return $exists;
     }
 
     function usernameExists($username)
