@@ -26,7 +26,9 @@ class authenticator
         }
         $checkExists->execute();
         $checkExists->bind_result($exists);
-        return $checkExists->fetch();
+        $checkExists->fetch();
+
+        return $exists;
 
         
     }
