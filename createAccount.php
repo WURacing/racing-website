@@ -53,15 +53,6 @@ include 'authenticator.php';
         </div>
     </div>
 
-    <?php
-    if (isset($_POST["logout"])) {
-        session_destroy();
-        echo '<h2 class="success">Logout successful.</h2>';
-    }
-    if (isset($_POST["username"])) {
-        echo '<h2 class="error">Invalid Username</h2>';
-    }
-    ?>
 
     <div class="background">
         <img class="" src="assets/images/both-cars-closeup.jpg" alt="">
