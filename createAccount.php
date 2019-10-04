@@ -59,7 +59,7 @@ include 'authenticator.php';
     </div>
 
     <div class="create-content">
-        <form class="login" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form class="login" action="memberHome.php" method="POST">
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter full name">
