@@ -102,12 +102,10 @@ include 'authenticator.php';
                 }
 
             } else {
-                echo "Error: passwords did not match";
+                echo "<h1>Error: passwords did not match</h1>";
             }
         }
     ?>
-
-
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/popper/popper.min.js"></script>
