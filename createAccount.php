@@ -62,19 +62,19 @@ include 'authenticator.php';
         <form class="login" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter full name">
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter full name">
             </div>
             <div class="form-group">
                 <label for="wustlEmail">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
             </div>
             <div class="form-group">
                 <label for="password">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password">
             </div>
             <button id="subBtn" type="submit" class="btn btn-primary">Create Account</button>
         </form>
