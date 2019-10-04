@@ -115,7 +115,7 @@ class authenticator
         $makeUser->execute();
 
         // Grant the user privileges to modify information on the site
-        $grantPrivilegesString = sprintf("grant select, insert, update, delete on newsFeed.* to %s@'localhost'", $email);
+        $grantPrivilegesString = sprintf("grant select, insert, update, delete on sae_database.* to %s@'localhost'", $email);
         $grantPrivileges = $adminConnection->prepare($grantPrivilegesString);
         if (!$grantPrivileges) {
             printf("Query Prep Failed: %s\n", $grantPrivileges->error);
