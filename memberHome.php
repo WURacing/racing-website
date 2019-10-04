@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION['nID']))
+if (!isset($_SESSION['token']))
 {
     header("Location: login.php");
     die();
