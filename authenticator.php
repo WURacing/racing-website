@@ -9,30 +9,6 @@ class authenticator
     public function __constuct()
     { }
 
-    function forTesting()
-    {
-        $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'sae_database');
-        if ($adminConnection->connect_errno) {
-            printf("Connection Failed: %s\n", $adminConnection->error);
-            exit;
-        }
-
-        // Check if username exists
-        $checkEmailAuthQuery = sprintf("select password from users where email='user'");
-        $checkEmailAuth = $adminConnection->prepare($checkEmailAuthQuer);
-        if (!$checkEmailAuth) {
-            printf("Query Prep Failed: %s\n", $checkEmailAuth->error);
-            exit;
-        }
-        $checkEmailAuth->execute();
-        $checkEmailAuth->bind_result($authed);
-        $checkEmailAuth->fetch();
-
-        return $authed;
-
-        
-    }
-
     function emailAuthorized($email)
     {
 
@@ -44,6 +20,34 @@ class authenticator
 
         // Check if email is authorized
         $checkEmailAuthQuery = sprintf("select emailAuthorized from users where email='%s'", $email);
+        $checkEmailAuth = $adminConnection->prepare($checkEmailAuthQuery);
+        if (!$checkEmailAuth) {
+            printf("Query Prep Failed: %s\n", $checkEmailAuth->error);
+            exit;
+        }
+        $checkEmailAuth->execute();
+        $checkEmailAuth->bind_result($authed);
+        $checkEmailAuth->fetch();
+
+        $adminConnection->close();
+
+        if ($authed) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function emailExists($email)
+    {
+        $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'sae_database');
+        if ($adminConnection->connect_errno) {
+            printf("Connection Failed: %s\n", $adminConnection->error);
+            exit;
+        }
+
+        // Check if email is authorized
+        $checkEmailAuthQuery = sprintf("select email from users where email='%s'", $email);
         $checkEmailAuth = $adminConnection->prepare($checkEmailAuthQuery);
         if (!$checkEmailAuth) {
             printf("Query Prep Failed: %s\n", $checkEmailAuth->error);
@@ -91,10 +95,10 @@ class authenticator
         }
     }
 
-    function makeUser($email, $password, $email)
+    function makeUser($email, $password, $name)
     {
 
-        $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'newsFeed');
+        $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'sae_database');
         if ($adminConnection->connect_errno) {
             printf("Connection Failed: %s\n", $adminConnection->error);
             exit;
@@ -119,23 +123,16 @@ class authenticator
         $grantPrivileges->execute();
 
         // Add user's info the the users database (separated into email/no-email cases)
-        if ($email != NULL) {
-            $email = htmlentities($_POST["email"]);
-            $addUserString = sprintf(
-                "insert into users (username, password, email) values ('%s', '%s', '%s')",
-                $email,
-                password_hash($password, PASSWORD_DEFAULT),
-                $email
-            );
-            $addUser = $adminConnection->prepare($addUserString);
-        } else {
-            $addUserString = sprintf(
-                "insert into users (username, password) values ('%s', '%s')",
-                $email,
-                password_hash($password, PASSWORD_DEFAULT)
-            );
-            $addUser = $adminConnection->prepare($addUserString);
-        }
+
+        $email = htmlentities($_POST["email"]);
+        $addUserString = sprintf(
+            "insert into users (email, password, fullName) values ('%s', '%s', '%s')",
+            $email,
+            password_hash($password, PASSWORD_DEFAULT),
+            $name
+        );
+        $addUser = $adminConnection->prepare($addUserString);
+
         if (!$addUser) {
             printf("Query Prep Failed: %s\n", $addUser->error);
             exit;

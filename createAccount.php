@@ -67,47 +67,53 @@ include 'authenticator.php';
         <img class="" src="assets/images/both-cars-closeup.jpg" alt="">
     </div>
 
-    <div class="login-content">
-
-
+    <div class="create-content">
         <form class="login" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group">
-                <label for="wustlEmail">Under Construction</label>
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter full name">
+            </div>
+            <div class="form-group">
+                <label for="wustlEmail">Email</label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
-                <label for="password">Under Construction</label>
+                <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Password">
-                <a href="index.html">Forgot your password?</a>
             </div>
-            <button id="subBtn" type="submit" class="btn btn-primary">Sign In</button>
-
-
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Confirm Password">
+            </div>
+            <button id="subBtn" type="submit" class="btn btn-primary">Create Account</button>
         </form>
-
-        <div id="createBtnDiv">
-
-            <label>or</label><br>
-
-            <a href="createAccount.php"><button id="createBtn" class="btn btn-primary">Create Account</button></a>
-        </div>
-
-
     </div>
 
     <?php
-    if (isset($_POST["email"]) and isset($_POST["password"])) {
-        $email = htmlentities($_POST["email"]);
-        $password = htmlentities($_POST["password"]);
+        if (isset($_POST["email"]) and isset($_POST["password"]) and isset($_POST["confirmPassword"]) and isset($_POST("name"))) {
 
-        $auth = new authenticator();
-        if ($auth->emailAuthorized($email) and $auth->verifyPassword($email, $password)) {
-            $auth->loginSuccess($email, $password);
-            exit;
-        } else {
-            echo "<p>Incorrect Email or Password</p>";
+            $email = htmlentities($_POST["email"]);
+            $name = htmlentities($_POST["name"]);
+            $password = htmlentities($_POST["password"]);
+            $confPass = htmlentities($_POST["confirmPassword"]);
+
+            // Check that password and confirmPassword are the same
+            if (password_verify($password, password_hash($confPass, PASSWORD_DEFAULT))) {
+
+                $auth = new authenticator();
+                if ($auth->emailExists($email)) {
+                    echo "Email has already been used on account";
+                    exit;
+                } else {
+                    $auth->makeUser($email, $password, $name);
+                    $auth->loginSuccess($email, $password);
+                    exit;
+                }
+
+            } else {
+                echo "Error: passwords did not match";
+            }
         }
-    }
     ?>
 
 
