@@ -1,7 +1,7 @@
 <?php
-if (!isset($_SESSION['token']))
+if (!isset($_SESSION['nID']))
 {
-    header("Location: login.php");
+    header("Location: login.html");
     die();
 }
 ?>
