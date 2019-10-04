@@ -13,6 +13,7 @@ class authenticator
     {
 
         $adminConnection = new mysqli('localhost', $this->adminUsername, $this->adminPassword, 'sae_database');
+        
         if ($adminConnection->connect_errno) {
             printf("Connection Failed: %s\n", $adminConnection->error);
             exit;
@@ -147,3 +148,4 @@ class authenticator
         exit;
     }
 }
+?>
