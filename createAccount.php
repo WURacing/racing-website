@@ -104,6 +104,7 @@ include 'authenticator.php';
                 echo "<h1>Error: passwords did not match</h1>";
             }
         }
+        echo "<h1>Never made it in</h1>";
     ?>
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
