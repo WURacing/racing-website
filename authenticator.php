@@ -1,7 +1,6 @@
 <?php
 class authenticator
 {
-
     // Change admin password on a regularly scheduled basis for security purposes
     private $adminUsername = 'sae_phpScripts';
     private $adminPassword = 'HmmW13fLpM1U';

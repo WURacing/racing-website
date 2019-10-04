@@ -1,7 +1,4 @@
-<?php
-session_start();
-include 'authenticator.php';
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -53,16 +50,6 @@ include 'authenticator.php';
         </div>
     </div>
 
-    <?php
-    if (isset($_POST["logout"])) {
-        session_destroy();
-        echo '<h2 class="success">Logout successful.</h2>';
-    }
-    if (isset($_POST["username"])) {
-        echo '<h2 class="error">Invalid Username</h2>';
-    }
-    ?>
-
     <div class="background">
         <img class="" src="assets/images/both-cars-closeup.jpg" alt="">
     </div>
@@ -70,7 +57,7 @@ include 'authenticator.php';
     <div class="login-content">
 
 
-        <form class="login" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form class="login" action="authentication.php" method="POST">
             <div class="form-group">
                 <label for="wustlEmail">Under Construction</label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -89,27 +76,11 @@ include 'authenticator.php';
 
             <label>or</label><br>
 
-            <a href="createAccount.php"><button id="createBtn" class="btn btn-primary">Create Account</button></a>
+            <a href="createAccount.html"><button id="createBtn" class="btn btn-primary">Create Account</button></a>
         </div>
 
 
     </div>
-
-    <?php
-    if (isset($_POST["email"]) and isset($_POST["password"])) {
-        $email = htmlentities($_POST["email"]);
-        $password = htmlentities($_POST["password"]);
-
-        $auth = new authenticator();
-        if ($auth->emailAuthorized($email) and $auth->verifyPassword($email, $password)) {
-            $auth->loginSuccess($email, $password);
-            exit;
-        } else {
-            echo "<p>Incorrect Email or Password</p>";
-        }
-    }
-    ?>
-
 
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
