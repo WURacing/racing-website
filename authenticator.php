@@ -143,7 +143,7 @@ class authenticator
         $_SESSION["email"] = $email;
         $_SESSION["password"] = $password;
 
-        header("Location: memberHome.php");
+       // header("Location: memberHome.php");
         exit;
     }
 }
