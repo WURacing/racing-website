@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION['nID']))
 {
-    header("Location: login.html");
+    header("Location: login.php");
     die();
 }
 ?>
