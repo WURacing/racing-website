@@ -74,7 +74,7 @@ include 'authenticator.php';
             </div>
             <div class="form-group">
                 <label for="password">Confirm Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
             </div>
             <button id="subBtn" type="submit" class="btn btn-primary">Create Account</button>
         </form>
@@ -100,7 +100,6 @@ include 'authenticator.php';
                     $auth->loginSuccess($email, $password);
                     exit;
                 }
-
             } else {
                 echo "<h1>Error: passwords did not match</h1>";
             }
