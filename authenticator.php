@@ -109,6 +109,7 @@ class authenticator
         $makeUser = $adminConnection->prepare($makeUserString);
         if (!$makeUser) {
             printf("Query Prep Failed: %s\n", $makeUser->error);
+            echo "exit1";
             exit;
         }
         $makeUser->execute();
@@ -118,6 +119,7 @@ class authenticator
         $grantPrivileges = $adminConnection->prepare($grantPrivilegesString);
         if (!$grantPrivileges) {
             printf("Query Prep Failed: %s\n", $grantPrivileges->error);
+            echo "exit2";
             exit;
         }
         $grantPrivileges->execute();
@@ -135,6 +137,7 @@ class authenticator
 
         if (!$addUser) {
             printf("Query Prep Failed: %s\n", $addUser->error);
+            echo "exit3";
             exit;
         }
         $addUser->execute();
