@@ -90,7 +90,7 @@ include 'authenticator.php';
     </div>
 
     <?php
-        if (isset($_POST["email"]) and isset($_POST["password"]) and isset($_POST["confirmPassword"]) and isset($_POST("name"))) {
+        if (isset($_POST["email"]) and isset($_POST["password"]) and isset($_POST["confirmPassword"]) and isset($_POST["name"])) {
 
             $email = htmlentities($_POST["email"]);
             $name = htmlentities($_POST["name"]);
