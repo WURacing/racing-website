@@ -143,11 +143,11 @@ class authenticator
         $_SESSION["email"] = $email;
         $_SESSION["password"] = $password;
 
-        $returningUserConnection = new mysqli('localhost', $email, $password, 'sae_database');
-        if ($returningUserConnection->connect_errno) {
-            printf("Connection Failed: %s\n", $returningUserConnection->error);
-            exit;
-        }
+        // $returningUserConnection = new mysqli('localhost', $email, $password, 'sae_database');
+        // if ($returningUserConnection->connect_errno) {
+        //     printf("Connection Failed: %s\n", $returningUserConnection->error);
+        //     exit;
+        // }
 
         // Figure this out if time
         // $_SESSION["con"] = $returningUserConnection;
