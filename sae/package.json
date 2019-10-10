@@ -3,8 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "@vimeo/player": "^2.10.0",
+    "jarallax": "^1.11.1",
+    "jquery": "^3.4.1",
+    "jquery-bridget": "^2.0.1",
+    "jquery-countdown": "^2.2.0",
+    "masonry-layout": "^4.2.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
   },
   "scripts": {

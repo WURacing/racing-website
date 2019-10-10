@@ -1,0 +1,9 @@
+.testimonial-text::before {
+    content: "“";
+}
+.testimonial-text::after {
+    content: "”";
+}
+.mbr-author-desc {
+    text-transform: uppercase;
+}
