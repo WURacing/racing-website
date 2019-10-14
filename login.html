@@ -23,6 +23,69 @@
 </head>
 
 <body>
+    <style>
+        #fundraising {
+            width: 100vw;
+            height: 50px;
+            text-align: center;
+            background-image: url('assets/images/red-triangles.jpg');
+            background-size: cover;
+            position: fixed;
+            margin: 0 auto;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            color: white;
+            align-items: baseline;
+            display: flex;
+            transition: linear, .25s;
+            animation: BackgroundAni 40s ease-in-out infinite;
+        }
+        
+        @keyframes BackgroundAni {
+            0%,
+            100% {
+                background-position: 0% 10%;
+            }
+            50% {
+                background-position: 0% 90%;
+            }
+        }
+        
+        #fundraising:hover {
+            color: #FF0000;
+        }
+        
+        #fundraising p {
+            margin: auto !important;
+        }
+        
+        #fundraising div {
+            margin: auto;
+            font-weight: bold;
+            background-color: #222;
+            border-radius: 17.5px;
+            width: fit-content;
+            padding: 0px 15px;
+            height: 70%;
+            align-items: center;
+            display: flex;
+        }
+        
+        .login-content {
+            margin-top: 110px;
+        }
+    </style>
+
+    <a href="https://wustl.advancementform.com/campaign/wuracing" target="blank">
+        <div id="fundraising">
+            <div>
+                <p>Consider supporting our fundraising campaign here</p>
+            </div>
+        </div>
+    </a>
+
+
     <div id="nav">
         <a class="img-fluid" href="index.html">
             <img id="logoText" src="assets/images/logoText-white.png" alt="Wash U Racing Logo Text">
