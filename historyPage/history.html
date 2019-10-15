@@ -29,7 +29,8 @@
             width: 100vw;
             height: 50px;
             text-align: center;
-            background-image: url('../assets/images/red-triangles.jpg');
+            background-image: url('../assets/images/anitest1.jpg');
+            background-position: 0% 80%;
             background-size: cover;
             position: fixed;
             margin: 0 auto;
@@ -40,16 +41,15 @@
             align-items: baseline;
             display: flex;
             transition: linear, .25s;
-            animation: BackgroundAni 40s ease-in-out infinite;
+            animation: BackgroundAni 15s ease-in-out;
         }
         
         @keyframes BackgroundAni {
-            0%,
-            100% {
-                background-position: 0% 10%;
+            0% {
+                background-position: 0% 0%;
             }
-            50% {
-                background-position: 0% 90%;
+            100% {
+                background-position: 0% 80%;
             }
         }
         
@@ -76,12 +76,18 @@
         .index-content {
             margin-top: 100px;
         }
+        
+        @media (max-width: 468px) {
+            #fundraising p {
+                font-size: 12px;
+            }
+        }
     </style>
 
     <a href="https://wustl.advancementform.com/campaign/wuracing">
         <div id="fundraising">
             <div>
-                <p>Support WashU Racing here</p>
+                <p>Support WashU Racing's Fundraising Campaign</p>
             </div>
         </div>
     </a>
