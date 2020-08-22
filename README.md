@@ -1,2 +1,4 @@
 # racing-website
-GitHub Pages
+
+Staging: https://wuracing.github.io/racing-website/   
+Production: https://sae.wustl.edu/
