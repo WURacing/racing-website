@@ -77,7 +77,7 @@ body {
 }
 
 #two {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 #tier2Grid {
